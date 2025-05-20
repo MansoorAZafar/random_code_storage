@@ -1,0 +1,40 @@
+# If you use flutterflow and integrate to GitHub, here's a YML to run the integration tests automatically
+#  there is literally no way
+name: Run Tests
+on: [push, workflow_dispatch]
+
+jobs:
+
+  integration-test:
+    runs-on: ubuntu-latest
+    name: Integration Tests
+    steps:
+      - name: Check out Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Install Chrome Driver
+        run: npx @puppeteer/browsers install chromedriver@stable
+
+      - name: Verify Chrome Driver installed
+        run: chromedriver --version
+
+      - name: Launch Chrome Driver in the Background
+        run: chromedriver --port=4444 &
+
+      - name: Install xvfb for a virtual Display
+        run: sudo apt-get install xvfb
+        
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.27.3'
+
+      - name: Run Flutter Integration Driver Tests
+        run: xvfb-run --auto-servernum -- flutter drive --driver=test_driver/integration_test.dart --target=integration_test/test.dart -d chrome
+      
