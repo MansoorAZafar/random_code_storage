@@ -1,0 +1,86 @@
+# If you ever need a Mono Repo to Multi Repo done automatically based on the commit message, here's a action for it. See below.
+# Note: This action should go to the Mono-Repo (in the diagram below, it'd be in foo)
+#    - Also you need to Generate a GitHub PAT (Personal Access Token 
+# -------------------------------------------------------------------------
+# Legend:                                                                 |
+# -------                                                                 |
+# Repositories: foo (repo), bar (repo), qux (repo), baz (repo)            |
+# (Auto = automatically)                                                  |
+# -------------------------------------------------------------------------
+#  
+#                                                                        ------------
+#                                  |------(Commit_Message == 'qux')----> |   quz    |
+#                                  |                                     ------------
+#                                  |
+#              ------------  Auto  |                                     ------------
+#  Push to ->  |   foo    | -----> |------(Commit_Message == 'bar')----> |   bar    |
+#              ------------        |                                     ------------                              
+#                                  |
+#                                  |                                     ------------
+#                                  |------(Commit_Message == 'baz')----> |   baz    |
+#                                                                       ------------
+
+name: Sync to Another Repo
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  synchronize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+      - name: Read latest Commit Message
+        id: get_commit
+        run: |
+          message=$(git log -1 --pretty=%B | tr -d '[:space:]')
+          echo "Commit Message: $message"
+          echo "commit_message=$message" >> $GITHUB_OUTPUT
+
+      - name: Push to other repository on source-code branch
+        run: |
+          COMMIT_MESSAGE ="${{ steps.get_commit.outputs.commit_message }}"
+          if [[ "$COMMIT_MESSAGE" == "quz" || $COMMIT_MESSAGE == "bar" || "$COMMIT_MESSAGE" == "baz" ]]; then
+            # if you want to add more to the repo's name i.e if you're repo is actually called foo-bar but only want to push to it when the commit message is foo
+            # use the line below
+            COMMIT_MESSAGE+="-bar"
+
+            echo "Matched Repo: $COMMIT_MESSAGE"
+            git clone --depth=1 https://${{ secrets.PAT }}@github.com/[ORGANIZATION/USERNAME]/$COMMIT_MESSAGE.git /tmp/$COMMIT_MESSAGE
+
+            cd /tmp/$COMMIT_MESSAGE
+            git remote set-url origin https://${{ secrets.PAT }}@github.com/[ORGANIZATION/USERNAME]/$COMMIT_MESSAGE.git 
+
+            # Fetch latest from the new branch to make sure it's up to date :OOO
+            git fetch origin
+
+            # make sure the branch exists .... else create it :O
+            if git show-ref --verify --quiet refs/remote/origin/[BRACH_NAME]; then
+              git checkout -B [BRACH_NAME] origin/[BRACH_NAME]
+            else:
+              git checkout -b [BRACH_NAME]
+            fi
+
+            # go back to the root
+            cd -
+
+            rsync -av --exclude='.git' --exclude='.github/' ./ /tmp/$COMMIT_MESSAGE
+
+            cd /tmp/$COMMIT_MESSAFE
+            git add .
+
+            git commit -m "Sync from source repo: ${{ github.sha }}" || echo "No changes to commit"
+            git push origin [BRACH_NAME] --force
+
+          else:
+            echo "No repo found for: $COMM_TMESSAGE. Skipping CI"
+          fi
+        
