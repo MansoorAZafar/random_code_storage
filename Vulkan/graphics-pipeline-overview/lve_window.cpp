@@ -1,4 +1,3 @@
-// lve_window.cpp
 #include "lve_window.hpp"
 namespace lve {
 	LveWindow::LveWindow(const int& width, const int& height, const char* windowName)

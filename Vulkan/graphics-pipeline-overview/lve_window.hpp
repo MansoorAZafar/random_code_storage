@@ -1,4 +1,3 @@
-// lve_window.hpp
 #ifndef LVE_WINDOW_HPP
 #define LVE_WINDOW_HPP
 

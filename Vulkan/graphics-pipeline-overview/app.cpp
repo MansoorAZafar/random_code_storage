@@ -1,4 +1,3 @@
-// app.cpp
 #include "app.hpp"
 
 void lve::App::run() {

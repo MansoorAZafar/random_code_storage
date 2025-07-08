@@ -1,4 +1,3 @@
-// main.cpp
 #include "app.hpp"
 #include <cstdlib>
 #include <iostream>
