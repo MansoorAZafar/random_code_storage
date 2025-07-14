@@ -6,7 +6,5 @@ void lve::App::run() {
 		// window events = keystrokes, user click, ... etc
 		lveWindow.render();
 		glfwPollEvents();
-		
-
 	}
 }

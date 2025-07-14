@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
+//lve = little vulkan engine window 
 
 int main() {
 	lve::App app{};
