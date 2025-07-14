@@ -3,12 +3,14 @@
 
 #include <vector>
 #include <fstream>
+#include <stdexcept>
+#include <iostream>
+#include <string>
 
 namespace lve {
 	class LvePipeline {
 	  public:
 
-	  	LvePipeline(const char* vertFilePath);
 	  	LvePipeline(const char* vertFilePath, const char* fragFilePath);
 
 	  private:
