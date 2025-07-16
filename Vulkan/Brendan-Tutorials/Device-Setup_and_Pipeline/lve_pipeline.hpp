@@ -7,6 +7,8 @@
 #include <iostream>
 #include <string>
 
+#include "lve_device.hpp"
+
 namespace lve {
 	class LvePipeline {
 	  public:

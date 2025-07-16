@@ -22,10 +22,16 @@ namespace lve {
 
 	void LveWindow::render() {}
 
+	void LveWindow::createWindowSurface(VkInstance instance, VkSurfaceKHR* surface) {
+		if(glfwCreateWindowSurface(instance, window, nullptr, surface) != VK_SUCCESS) {
+			throw std::runtime_error("Failed to create window surface");
+		}
+	}
 
 	LveWindow::~LveWindow() {
 		glfwDestroyWindow(this->window);
 		glfwTerminate();
 	}
+
 
 };

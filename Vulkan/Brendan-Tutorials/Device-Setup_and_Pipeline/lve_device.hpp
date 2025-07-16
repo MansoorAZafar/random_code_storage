@@ -31,7 +31,7 @@ class LveDevice {
   const bool enableValidationLayers = true;
 #endif
 
-  LveDevice(LveWidnow &window);
+  LveDevice(LveWindow &window);
   ~LveDevice();
 
   // Not copyable or movable
