@@ -1,4 +1,0 @@
----.*.*|Program Name: .*.*|Date & Time.: .*.*|Jama'at Name: .*.*|Report Title: .*.*|Member .*.*|Code .*.*|Total Members: .*.*|,
- 
-(?<=[A-Za-z])-
- 
