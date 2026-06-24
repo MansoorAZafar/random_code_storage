@@ -1,0 +1,13 @@
+**/.vscode/
+**/*.exe
+**/.vs/
+**/.editorconfig
+**/build/
+**/Debug/
+**/Release/
+**/x64/
+**.tlog
+**/*.tlog
+**/Dependencies/
+**/*.user
+**/*.filters
