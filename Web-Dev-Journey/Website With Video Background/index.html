@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Travel Landing Page</title>
+</head>
+<body>
+    <section class="showcase">
+        <header>
+            <h2 class="logo">Travel</h2>
+            <div class="toggle"></div>
+        </header>
+        <video src="https://videos.pexels.com/video-files/2169880/2169880-hd_1280_720_30fps.mp4" muted loop autoplay></video>
+
+        <div class="overlay"></div>
+        <div class="text">
+            <h2>Never Stop</h2>
+            <h3>Exploring the World</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae assumenda quae culpa quam facilis. Vitae exercitationem eius tempore aliquam? Sed?</p>
+            <a href="#">Explore</a>
+        </div>
+
+        <ul class="social">
+            <li>
+                <a href="#">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/1200px-2021_Facebook_icon.svg.png" alt="Facebook" width="30px">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png" alt="Twitter" width="30px">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png" alt="Instagram" width="30px">
+                </a>
+            </li>
+        </ul>
+
+    </section>
+
+    <div class="menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Destination</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+    
+    <script>
+        const menu_toggle = document.querySelector('.toggle')
+        const showcase_toggle = document.querySelector('.showcase')
+
+        menu_toggle.addEventListener('click', () => {
+            menu_toggle.classList.toggle('active')
+            showcase_toggle.classList.toggle('active')
+        })
+    </script>
+</body>
+</html>
+
+
+<!-- To add JS we do it at the end of 
+ our file
+ with the <script> tag  -->

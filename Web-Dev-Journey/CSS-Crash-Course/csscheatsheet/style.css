@@ -1,0 +1,53 @@
+body {
+    font-size: 16px;
+    margin:0;
+}
+
+.box-1{
+    border: 5px red solid;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.box-1 h1 {
+    font-style: italic;
+    font-weight: 800;
+    text-decoration: underline;
+    text-transform: uppercase;
+    word-spacing: 1em;
+    letter-spacing: 0.2em;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.box-2 {
+    border: 3px #333 dotted;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+
+.categories {
+    border: 1px #333 solid;
+    padding: 20px;
+}
+
+.categories h2 {
+    text-align: center;
+}
+
+.categories ul {
+    padding: 0;
+}
+
+.categories li {
+    padding-bottom: 6px;
+    border-bottom: 2px red solid;
+    /* Custom  list sytle
+    list-style-image: url(.../...png);*/
+}

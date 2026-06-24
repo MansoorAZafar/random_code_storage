@@ -1,0 +1,62 @@
+.services {
+    margin-top: 40px;
+    display: grid;
+    /* All tags/elements inside this will be displayed as a 'grid' 
+    * Doing this alone doesn't make it look like a grid but is a set-up
+    To change the lOOK -> we need to define our columns*/
+    grid-template-columns: repeat(3, 1fr);
+    /* Here we define 2 things
+    1. How wide each column should be
+    2. How many columns we want 
+    EX. 70% 30% -> 2 grids in a row and first grid is 70% and 2nd grid is 30% 
+    EX. 30% 30% 31% -> 3 grids in a row and first 2 grids are 30% last is 31%
+    ...
+    A good unit to use for this are 'fraction' units 'fr'
+    instead of typing out the same content i.e 1fr 1fr 1fr
+    you can do repeat(3, 1fr)*/
+    gap: 40px;
+    /* To put spaces inbetween these grid items, just use 'gap; 
+    adds space both vertically and horizontally*/
+    text-align: center;
+}
+
+.services .service h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 20px;
+    color: #1b206e;
+}
+
+.services .service {
+    padding: 30px;
+    /* background-color: #f4f4f4; */
+    transition: 0.3s;
+}
+
+.services .service:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3)
+}
+
+.services .service .icon img{
+    max-width: 80px;
+}
+
+@media (max-width: 1068px) {
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .services .service {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3)
+    }
+}
+
+@media (max-width: 768px) {
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+    .services .service {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3)
+    }
+}

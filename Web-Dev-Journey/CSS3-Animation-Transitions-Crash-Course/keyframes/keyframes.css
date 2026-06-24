@@ -1,0 +1,93 @@
+body {
+    background: #333;
+    padding: 0;
+    margin: 0;
+}
+
+.box {
+    background: white;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    animation-name: myanimation;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    /* animation-delay: 2s; */
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+}
+
+@keyframes myanimation {
+    /* Specify different points of the animation */
+    0%   { 
+        background-color: white; 
+        left: 0px; 
+        top: 0px;
+        border-radius: 0 0 0 0;
+    }
+    
+    25%  { 
+        background-color: red;
+        left: 300px;
+        top: 0px;
+        border-radius: 50% 0 0 0;
+    }
+    
+    
+    50%  { 
+        background-color: green; 
+        left: 300px;
+        top: 300px;
+        border-radius: 50% 50% 0 0
+    }
+    
+    75%  { 
+        background-color: blue; 
+        left: 0px;
+        top: 300px;
+        border-radius: 50% 50% 50% 0;
+    }
+    
+    100% { 
+        background-color: white; 
+        left: 0px;
+        top: 0px;
+        border-radius: 50% 50% 50% 50%;
+    }
+}
+
+/* 
+* animation-name: 
+*   - The name of the animation you'll make
+*
+*   * animation-duration:
+*   - The length/duration of the animation
+*       (how long it'll last)
+*
+* We want to create 'keyframes' for our animation
+* Keyframes are the actual 'animation'
+* they'll contain the content of what to do
+*
+*
+* animation-iteration-count:
+*   - How many times you want the animation to repeat
+*
+* animation-delay: 
+*   - delays the animation until x amount of time has passed
+*
+* animation-direction:
+*   - The way you want the animation to run
+*   clock-wise, counter-clockwise, or alternating
+*
+* animation-timing-function:
+*   - you can control the speed 
+*   linear: move at same speed
+*   ease-in: start slow -> end fast
+*   east-out: start flast -> end slow
+*   ease-in-out: Default: start slow -> end slow
+*
+* animation-fill-mode:
+*   - Changes the state to the ending / starting frame
+*   - if you wanted to keep it as the last keyframe 100% then change this to forwards
+*
+**/

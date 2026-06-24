@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family:consolas, Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.wavy {
+    position: relative;
+}
+
+.wavy span {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    font-size: 2em;
+    text-transform: uppercase;
+    animation: text 1s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes text {
+    0% {
+        transform: translateY(0px);
+        transform: rotateY(180deg);
+    }
+    20% {
+        transform: translateY(-20px);
+    }
+    40%, 100% {
+        transform: translateY(0px);
+        transform: rotateY(0deg);
+    }
+}

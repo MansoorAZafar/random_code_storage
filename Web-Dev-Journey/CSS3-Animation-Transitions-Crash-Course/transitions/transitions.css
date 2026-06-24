@@ -1,0 +1,44 @@
+body {
+    background: #333;
+}
+
+.box {
+    background: white;
+    height: 300px;
+    width: 300px;
+    position: relative;
+    margin: auto;
+    top: 200px;
+
+    /* rotating is transform */
+    transition-property: background, border-radius,  transform;
+    transition-duration: 1s;
+
+
+}
+
+.box:hover {
+    background: red;
+    border-radius: 50%;
+    transform: rotateY(180deg);
+}
+
+/*
+* transition-property:
+*   - Have to define what property we want to add
+*     to this transition
+*   - You can add multiple properties
+*   ex. transition-property: background, radius, ...
+*
+*   - Same attributes as the animation stuff
+*   - You can seperate timings with commas
+*   EX: I want the background to change in 1 second
+*       and I want the border-radius to change in 3
+*       seconds
+*   Solution: 
+*       transition-property: background, border-radius
+*       transition-duration: 1s, 3s
+*   
+*   - If you don't want to specify properties just do
+*       transition-property: all
+*/

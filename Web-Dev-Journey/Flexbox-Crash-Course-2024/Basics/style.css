@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.flex-container {
+    /* height: 500px;    */
+    /* flex-direction: column; */
+    display: flex;
+    background-color: #f4f4f4;
+    /* You use justify content on the container not the items */
+    /* justify-content: end; */
+    /* Always on the main access */
+    /* Works with the main access */
+    /* align-items: start; */
+    /* Always on the CROSS access */
+
+    flex-wrap: wrap;
+    /* Pushes down if needs to wrap */
+}
+/* You can align one or more individually with align:self */
+
+.item {
+    /* flex-basis: 100px; */
+    /* flex-grow: 1; */
+    /* Now they will always be the same size */
+    /* By default, it'll just take up the space of the content */
+    /* Flex: grow shrink basis */
+    flex: 1 0 100px;
+    /* If you just want even objects that all take up and use the same amount of space do :  
+    flex: 1;
+    */
+    height: 100px;
+    background: #254de4;
+    margin: 10px;
+    color: #fff;
+    /* float: left; <- this was the previous method */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item:nth-of-type(1) {
+    /* align-self: start; */
+    /* order: 2; */
+    /* Changes the order in which it appears */
+    /* flex-grow: 1; */
+    /* flex-shrink: 1; */
+}
+
+.item:nth-of-type(2) {
+    /* align-self: center; */
+    /* order: 1; */
+    /* flex-basis: 200px; */
+    /* flex-grow: 2; */
+    /* flex-shrink: 2; */
+}
+
+.item:nth-of-type(3) {
+    /* align-self: end; */
+    /* order 3; */
+    /* flex-grow: 1; */
+    /* It grows at the rate of 1 and will always stay at this size at min */
+    /* flex-shrink: 3; */
+}
+

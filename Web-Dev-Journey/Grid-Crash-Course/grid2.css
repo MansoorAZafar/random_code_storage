@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open sans', sans-serif;
+    font-size: 16px;
+    height: 100vh;
+
+    display: grid;
+    grid-template-areas:
+        'header header header'
+        'nav content sidebar'
+        'nav footer footer'
+    ;
+    /* Text representation of the areas we r going to make (yes this is needed) */
+    /* To change sizing we will use */
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 80px 1fr 70px;
+}
+
+header,
+footer,
+main,
+aside,
+nav {
+    background-color: steelblue;
+    color: #fff;
+    padding: 20px;
+    border: skyblue 1px solid;
+}
+
+/* this is the selector /tag  */
+header {
+    grid-area: header; 
+    /* the word header here -> pertains to the one in the body 'header' not the tag */
+}
+
+nav {
+    grid-area: nav;
+}
+
+main {
+    grid-area: content;
+}
+
+aside {
+    grid-area: sidebar;
+}
+
+footer {
+    grid-area: footer;
+}

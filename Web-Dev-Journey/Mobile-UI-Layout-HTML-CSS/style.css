@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --primary-color: #cc0000;
+    --secondary-color: #7c0000;
+}
+
+html, 
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    overflow: none;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.app-header {
+    background-color: var(--primary-color);
+    box-shadow: 3px 3px 10px #888;
+}
+
+.app-header .container {
+    display: flex;
+    /* By default goes next to each other */
+    flex-direction: column;
+    /* Puts them ontop of each other */
+    align-items: center;
+    justify-content: center;
+    padding: 15px 10px;
+}
+
+.app-header .logo {
+    width: 170px;
+    margin-bottom: 16px;
+}
+
+.app-header .search {
+    padding: 7px;
+    width: 300px;
+    border: 0;
+    border-radius: 3px;
+}
+
+.subheader {
+    background: var(--secondary-color);
+    color: #fff;
+    box-shadow: 3px 3px 10px #888;
+    margin: 0 auto 16px auto;
+    width: 90%;
+    font-size: 14px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.subheader p {
+    margin: 4px;
+}
+
+.subheader img {
+    width: 40px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.grid .item {
+    display: flex;
+    /* by default, aligns everything horizotnally */
+    flex-direction: column;
+    /* sets them vertial */
+    border: 1px #ccc solid;
+    padding: 10px;
+    box-shadow: 1px 1px 2px #ccc;
+}
+
+.grid .item h4 {
+    margin-bottom: 5px;
+}
+
+.grid .item p {
+    font-size: 14px;
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.grid .item img {
+    width: 30px;
+    align-self: flex-end;
+}
+
+.app-footer {
+    flex-shrink: 0;
+    background: #f4f4f4;
+    color: #444;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.app-footer ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* remaining space -> put's inbetween and outside evenly */
+    list-style: none;
+}
+
+.app-footer ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-footer ul li i {
+    font-size: 22px;
+}
+
+/* Splash */
+#splash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--primary-color);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s;
+}
+
+#splash img {
+    width: 300px;
+}
+
+#splash.fade {
+    opacity: 0;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid .item img {
+        width: 60px;
+    }
+}

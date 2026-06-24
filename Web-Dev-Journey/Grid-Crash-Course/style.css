@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background: #f5f5f5;
+}
+
+.container {
+    max-width: 960px;
+    margin: 100px auto;
+    padding: 10px;
+    display: grid;
+
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    /* This works since we're saying every 200 pixels put in a column */
+    /* This wraps it */
+    /* Add as many sizes for how many columns you want
+    col = column
+    ex. grid-template-columns: [1st col size] [2nd col size] ... 
+    you usually want to use fractions
+    1fr 2fr 3fr ...
+    1fr 1fr = 2 cols same length*/
+    /* To add spacing between columns */
+    column-gap: 10px;
+    row-gap: 10px;
+    /* could also just do
+    gap: 10px */
+
+    /* Couple of ways to align items
+    1. strech:
+        - the default
+        - All items in the same col are set to the same size of the largest one
+    2. start
+        - Aligns to the top, so (gets rid of any empty space not including padding)
+        - Set to the very top of the border around it
+    3. center
+        - aligns the item to the center and gets rid of empty space
+    4. end
+        - aligns it to the bottom of the area
+        
+    [-----]
+    [  x  ]  <- start
+    [     ]
+    [_____]   
+
+    [-----]
+    [     ]  <- center
+    [  x  ]
+    [_____]   
+
+    [-----]
+    [     ]  <- end
+    [     ]
+    [__x__]     
+
+
+    Justify-content: 
+        end:
+            - puts it to the end horizontally
+        center:
+            - puts it to the center horiozontally 
+        space-around 
+            - puts equal space around horizontally
+    */
+
+
+    /* You can limit the height of a item and not make the height dynamically expand by doing: */
+    /* grid-auto-rows: 200px; */
+    /* You can also make it so it makes a size that is 
+    Min <= X <= Max */
+    /* grid-auto-rows: minmax(100px, auto); */
+    /* Same thing for columns
+    You can have the column be effected together */
+    /* grid-template-rows: repeat(2, 1fr); */
+    /* If you want to effect all col's use repeat(nCols, size) */
+
+}
+
+.item {
+    background: steelblue;
+    color: #fff;
+    font-size: 20px;
+    padding: 20px; 
+    border: skyblue 1px solid;
+}
+/* You can select divs in 2 ways
+1. Sudo selectors
+2. specific classes (u have to give this in the html) */
+
+/* Sudo Selector */
+.item:nth-of-type(2) {
+    /* Selects the 2nd item */
+    /* height: 100px;
+    width: 100px;
+    align-self: center;
+    justify-self: center; */
+    font-size: 20px; 
+    /* just so the ide won't put a yellow line */
+}
+
+.item:nth-of-type(1) {
+    background: #000;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    /* This will strech the item 1 to (not inclusive) item 3
+    it will push item 2 (and others) to item 3 slot and take over item 2 old slot  */
+    /* The faster way is: */
+    /* grid-column: 1 / 3; 
+    you can also do:
+        grid-column: 1 / span 2;
+    You can also do this with rows
+    */
+}
+
+.item:nth-of-type(3) {
+    background: #333;
+    grid-row: 2 / 4;
+}
+
+.item:nth-of-type(4) {
+    background: #666565;
+    grid-row: 2 / 4;
+}
+
+@media(max-width: 500px) {
+    .container {
+        grid-template-columns: 1fr;
+
+    }
+}
