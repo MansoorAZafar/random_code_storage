@@ -1,0 +1,33 @@
+services:
+  finance:
+    container_name: finance
+    init: true
+    build: .
+    env_file:
+      - ./.env
+    ports:
+      - '8080:8080'
+
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    environment:
+      POSTGRES_DB: finanical_records
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis-stack:
+    image: redis/redis-stack:latest
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
+  postgres_data:
