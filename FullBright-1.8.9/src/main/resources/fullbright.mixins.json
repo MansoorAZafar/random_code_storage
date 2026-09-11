@@ -1,0 +1,9 @@
+{
+	"required": true,
+	"package": "com.fb.fullbright.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"refmap": "fullbright.refmap.json",
+	"mixins": [ "FullBrightCore" ],
+	"client": [],
+	"minVersion": "0.7.11"
+}
