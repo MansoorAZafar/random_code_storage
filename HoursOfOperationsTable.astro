@@ -1,0 +1,164 @@
+---
+import { hoursOfOperation, site, type HoursOfOperation } from "../lib/site";
+import "../styles/global.css"
+---
+
+<div class="w-full md:min-h-125 flex flex-col justify-center">
+    <div class="p-10 rounded-4xl bg-gray-50 ">
+        <h1 class="text-4xl font-bold leading-tight sm:text-2xl mb-6">{site.content.hoursOfOperation.title}</h1>
+        <div>
+            <ul>
+                {hoursOfOperation.map((work: HoursOfOperation) => {
+                    let listStyle = "flex justify-between border-b border-b-gray-500/50 mt-4 pb-3"; 
+                    if (work === hoursOfOperation[hoursOfOperation.length - 1]) {
+                        listStyle += " border-none"
+                    }
+
+                    return (
+                        <li class={listStyle}>
+                            <p class="text-black">{work.day}</p>
+                            {work.time === "Closed" ? 
+                                <p class="text-red-800 font-bold">Closed</p>
+                                    :  
+                                <p class="font-bold">
+                                    {work.time.startTime.time} {work.time.startTime.period} 
+                                    - 
+                                    {work.time.endTime.time} {work.time.endTime.period} 
+                                </p>
+                            }
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
+
+        <section class="mt-10 col-span-full w-full border border-gray-500/50 rounded-xl p-5">
+            <p class="text-gray-500 text-sm"> {site.content.hoursOfOperation["fax-box-description"]} </p>
+            <h2 class="text-2xl font-bold text-black">
+                {site.business.faxDisplay}
+            </h2>
+        </section>
+    </div>
+</div>
+
+<!--
+  Types:
+-------------------
+type Day = 
+    | 'Monday' 
+    | 'Tuesday' 
+    | 'Wednesday' 
+    | 'Thursday' 
+    | 'Friday' 
+    | 'Saturday' 
+    | 'Sunday' 
+    | 'Holidays';
+
+type Time = { 
+    time: string;
+    period: 'AM' | 'PM';
+};
+
+type WorkHours = {
+    startTime: Time;
+    endTime: Time;
+};
+
+export type HoursOfOperation = {
+    day: Day;
+    time: 'Closed' | WorkHours;
+};
+
+
+  Example Site object:
+------------------------------------
+{
+    "business": {
+      "faxDisplay": "000-000-0000"
+    },
+
+    "content": {
+        "hoursOfOperation": {
+            "title": "Hours of Operation",
+            "fax-box-description": "Fax to"
+        },
+        
+    },
+
+    "hours": [
+        {
+            "day": "Monday",
+            "time": {
+                "startTime": {
+                    "time": "10:00",
+                    "period": "AM"
+                },
+                "endTime": {
+                    "time": "5:00",
+                    "period": "PM"
+                }
+            }
+        },
+        {
+            "day": "Tuesday",
+            "time": {
+                "startTime": {
+                    "time": "10:00",
+                    "period": "AM"
+                },
+                "endTime": {
+                    "time": "5:00",
+                    "period": "PM"
+                }
+            }
+        },
+        {
+            "day": "Wednesday",
+            "time": {
+                "startTime": {
+                    "time": "10:00",
+                    "period": "AM"
+                },
+                "endTime": {
+                    "time": "5:00",
+                    "period": "PM"
+                }
+            }
+        },
+        {
+            "day": "Thursday",
+            "time": {
+                "startTime": {
+                    "time": "10:00",
+                    "period": "AM"
+                },
+                "endTime": {
+                    "time": "5:00",
+                    "period": "PM"
+                }
+            }
+        },
+        {
+            "day": "Friday",
+            "time": {
+                "startTime": {
+                    "time": "10:00",
+                    "period": "AM"
+                },
+                "endTime": {
+                    "time": "5:00",
+                    "period": "PM"
+                }
+            }
+        },
+        {
+            "day": "Saturday",
+            "time": "Closed"
+        },
+        {
+            "day": "Sunday",
+            "time": "Closed"
+        }
+    ],
+}
+-->
