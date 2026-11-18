@@ -24,7 +24,7 @@ $env:Path="$env:JAVA_HOME\bin;$env:Path"
 
 ## In Game Use
 ```bash
-/gamma <amount>
+/hidearmor <true/false>
 ```
 
 ## Details
