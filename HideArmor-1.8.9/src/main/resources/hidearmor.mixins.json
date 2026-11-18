@@ -1,0 +1,9 @@
+{
+	"required": true,
+	"package": "com.ha.hidearmor.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"refmap": "hidearmor.refmap.json",
+	"mixins": [ "HideArmorCore" ],
+	"client": [],
+	"minVersion": "0.7.11"
+}
